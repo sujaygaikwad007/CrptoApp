@@ -2,6 +2,9 @@ import SwiftUI
 
 @main
 struct CrptoAppApp: App {
+    
+    @StateObject private var vm  = HomeViewModel()
+    
     var body: some Scene {
         WindowGroup {
             
@@ -9,7 +12,8 @@ struct CrptoAppApp: App {
                 HomeView()
                     .navigationBarHidden(true)
             }
-         
+            .environmentObject(vm)
+            
         }
     }
 }
