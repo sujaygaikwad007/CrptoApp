@@ -29,25 +29,17 @@ struct MarketDataModel: Codable {
     }
     
     var marketCap: String{
-        /*
-         if let item = totalMarketCap.first(where: { (key,value) -> Bool in
-             return key == "usd"
-         }){
-             return "\(item.value)"
-         }
-         
-         */
-     
+        
         if let item = totalMarketCap.first(where: {$0.key == "usd"}){
             
-            return "\(item.value)"
+            return "$" + item.value.formattedWithAbbreviations()
         }
         return ""
     }
     
     var volume: String {
         if let volume = totalVolume.first(where: {$0.key == "usd"}){
-            return "\(volume.value)"
+            return "$" + volume.value.formattedWithAbbreviations()
         }
         return ""
     }
@@ -55,7 +47,7 @@ struct MarketDataModel: Codable {
     var btcDominance:String{
         if let item = totalMarketCap.first(where: {$0.key == "btc"}){
             
-            return "\(item.value.asPercentString())"
+            return item.value.asPercentString()
         }
         return ""
     }
