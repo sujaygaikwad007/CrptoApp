@@ -32,7 +32,6 @@ class HomeViewModel: ObservableObject {
         marketDataService.$marketData
             .map(mapGlobalmarketData)
             .sink { [weak self] (returnedData) in
-                print("returnedData------",returnedData)
                 self?.statModel = returnedData
                 
             }
