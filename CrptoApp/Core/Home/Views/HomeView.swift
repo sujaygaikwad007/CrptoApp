@@ -10,6 +10,7 @@ struct HomeView: View {
         ZStack{
             Color.theme.background
                 .ignoresSafeArea() //bg color
+            
                 .sheet(isPresented: $showPortFolioView) {
                     PortFolioView()
                         .environmentObject(vm)

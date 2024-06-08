@@ -9,12 +9,12 @@ struct StatisticsView: View {
                 .font(.caption)
                 .foregroundColor(Color.theme.secondaryText)
             Text(stat.value)
-                .font(.headline)
+                .font(.caption)
                 .foregroundColor(Color.theme.accent)
             
             HStack(spacing:4) {
                 Image(systemName: "triangle.fill")
-                    .font(.caption2)
+                    .font(.caption)
                     .rotationEffect(
                         Angle(degrees: (stat.percentageChange ?? 0) >= 0 ? 0 : 180 ))
                 Text(stat.percentageChange?.asPercentString() ?? "")

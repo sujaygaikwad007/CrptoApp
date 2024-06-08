@@ -27,12 +27,18 @@ struct PortFolioView: View {
             .toolbar(content: {
                 ToolbarItem(placement: .navigationBarLeading) {
                     XmarkButton()
-    
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                    saveButton
                 }
             })
+            .onChange(of: vm.searchText) { newValue in
+                
+                if newValue == "" {
+                    removeSelectedCoin()
+                }
+                
+            }
         }
         
     }
@@ -125,8 +131,12 @@ extension PortFolioView{
     }
     
     private func saveButtonPressed(){
-        guard let coin = selectedCoin else { return }
+        guard
+            let coin = selectedCoin,
+            let amount = Double(quantityText)
+            else { return }
         //Save to portFolio
+        vm.upadatePortFolio(coin: coin, amount: amount)
         
         //show CheckMark
         withAnimation(.easeIn) {
@@ -141,7 +151,6 @@ extension PortFolioView{
         DispatchQueue.main.asyncAfter(deadline: .now()+2.0) {
             withAnimation(.easeOut) {
                 showCheckMark = false
-                
             }
             
         }

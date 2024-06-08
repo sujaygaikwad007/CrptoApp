@@ -1,16 +1,19 @@
 import SwiftUI
 
 struct XmarkButton: View {
+    
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
-        Button(action: {
+        
+        Button {
             presentationMode.wrappedValue.dismiss()
-        },
-               label: {
+            print("Xmark")
+        } label: {
             Image(systemName: "xmark")
                 .font(.headline)
-        })
+        }
+        
     }
 }
 
