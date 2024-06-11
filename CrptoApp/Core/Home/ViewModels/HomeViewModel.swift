@@ -53,7 +53,6 @@ class HomeViewModel: ObservableObject {
             }
             .sink { [weak self] (receivedCoins) in
                 self?.portfolioCoins = receivedCoins
-                print("Portfolio Coins updated: \(receivedCoins)")
             }
             .store(in: &cancelable)
         

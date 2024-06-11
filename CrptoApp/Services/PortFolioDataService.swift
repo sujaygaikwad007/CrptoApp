@@ -31,7 +31,7 @@ class PortFolioDataService{
             }
         } else{
             add(coin: coin, amount: amount)
-            print("Add coin is called----")
+           
         }
         
         
@@ -44,7 +44,6 @@ class PortFolioDataService{
         let request = NSFetchRequest<PortFolioEntity>(entityName: entityName)
         do {
            savedEntities = try container.viewContext.fetch(request)
-            print("Saved data: \(savedEntities)")
         } catch let error {
             print("Error fetching entity-----",error)
         }
@@ -54,6 +53,7 @@ class PortFolioDataService{
         let entity = PortFolioEntity(context: container.viewContext)
         entity.coinId = coin.id
         entity.amount = amount
+        applyChange()
         
     }
     
